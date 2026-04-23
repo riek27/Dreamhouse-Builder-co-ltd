@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="Dreamhouse Builders CO. LTD – Professional construction & design in Juba, South Sudan. Architectural design, building construction, civil works & general contracting.">
     <meta name="keywords" content="Construction Juba, Building Contractors South Sudan, Architectural Design Juba, Civil Works, General Contracting, Renovation Juba">
     <meta name="author" content="Dreamhouse Builders CO. LTD">
@@ -45,6 +45,46 @@
         ::-webkit-scrollbar-thumb { background:#0ea5e9; border-radius:4px; }
         ::-webkit-scrollbar-thumb:hover { background:#0284c7; }
         
+        /* ===== RESPONSIVE LOGO FIX ===== */
+        .logo-img {
+            display: block;
+            max-width: 100%;
+            height: auto !important;
+            width: auto !important;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease;
+        }
+        /* Navigation specific logo constraints */
+        .nav-logo-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo-img {
+            max-height: 48px;
+            width: auto;
+        }
+        @media (min-width: 1024px) {
+            .nav-logo-img {
+                max-height: 56px;
+            }
+        }
+        /* Footer logo stays crisp */
+        footer .logo-img {
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+            box-shadow: none;
+            max-height: 44px;
+            width: auto;
+        }
+        /* Mobile menu logo */
+        .mobile-logo {
+            max-height: 44px;
+            width: auto;
+        }
+        /* ===== END LOGO FIX ===== */
+        
         .hero-bg { position:relative; }
         .hero-bg::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(8,14,26,0.88) 0%, rgba(15,23,42,0.72) 40%, rgba(8,14,26,0.85) 100%); z-index:1; }
         .hero-bg img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
@@ -83,10 +123,6 @@
         .hover-lift:hover { transform:translateY(-8px); box-shadow:0 30px 60px -15px rgba(0,0,0,0.15); }
         .hover-lift:hover .card-img { transform:scale(1.06); }
         .card-img { transition:transform 0.7s cubic-bezier(0.4,0,0.2,1); }
-        
-        @keyframes marquee { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
-        .marquee-track { animation:marquee 35s linear infinite; }
-        .marquee-track:hover { animation-play-state:paused; }
         
         .text-gradient { background:linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #0284c7 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
         .text-gradient-gold { background:linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
@@ -150,39 +186,6 @@
             z-index: 1;
         }
         .area-card:hover { transform: translateY(-6px); border-color: rgba(56,189,248,0.4); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
-
-        /* Logo styling for clarity and professional appearance */
-.logo-img {
-    max-height: 48px;
-    width: auto;
-    display: block;
-    border-radius: 8px; /* subtle rounded corners */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease;
-    object-fit: contain;
-}
-/* On larger screens, slightly larger logo */
-@media (min-width: 1024px) {
-    .logo-img {
-        max-height: 56px;
-    }
-}
-/* Footer logo adjustments */
-footer .logo-img {
-    filter: brightness(0) invert(1); /* makes logo white if it's dark, adjust as needed */
-    opacity: 0.9;
-    box-shadow: none;
-    max-height: 44px;
-}
-/* Optional: add a subtle background to nav logo for contrast */
-.nav-logo-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 4px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-    backdrop-filter: blur(4px);
-}
         
         /* Why Choose Us specific */
         .why-card {
@@ -195,6 +198,18 @@ footer .logo-img {
             background: rgba(14,165,233,0.08);
             border-color: rgba(14,165,233,0.3);
             transform: translateY(-4px);
+        }
+
+        /* Extra responsive touches */
+        @media (max-width: 480px) {
+            .btn-brand, .btn-gold, .btn-outline {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+                font-size: 0.9rem;
+            }
+            h1 {
+                word-break: break-word;
+            }
         }
     </style>
     <script type="application/ld+json">
@@ -250,8 +265,9 @@ footer .logo-img {
 <nav class="nav-glass sticky top-0 z-50 transition-shadow" id="navbar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-18 lg:h-20">
+            <!-- Logo with improved responsive classes -->
             <a href="#home" class="flex items-center gap-3 flex-shrink-0">
-                <img src="assets/dream.jpg" alt="Dreamhouse Builders Logo" class="h-12 w-auto">
+                <img src="assets/dream.jpg" alt="Dreamhouse Builders Logo" class="logo-img nav-logo-img h-12 lg:h-14 w-auto">
             </a>
             <div class="hidden xl:flex items-center gap-1">
                 <a href="#home" class="nav-link px-4 py-2 text-sm font-semibold text-slate-850/80 hover:text-brand-600 transition-colors rounded-lg hover:bg-brand-50/50">Home</a>
@@ -295,7 +311,7 @@ footer .logo-img {
 <div class="mobile-nav fixed top-0 right-0 w-80 max-w-full h-full bg-white shadow-2xl z-50 overflow-y-auto" id="mobileNav">
     <div class="p-6">
         <div class="flex justify-between items-center mb-8">
-            <img src="assets/dream.jpg" alt="Dreamhouse Builders" class="h-10">
+            <img src="assets/dream.jpg" alt="Dreamhouse Builders" class="logo-img mobile-logo h-10 w-auto">
             <button id="mobileMenuClose" class="p-2.5 rounded-xl hover:bg-surface-100 transition-colors" aria-label="Close menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
@@ -332,7 +348,7 @@ footer .logo-img {
 <!-- Hero Section -->
 <section id="home" class="hero-bg min-h-screen flex items-center justify-center">
     <img src="assets/dreamhom.jpg" alt="Construction site with workers - Dreamhouse Builders" loading="eager">
-    <div class="hero-content max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-36 lg:py-40">
+    <div class="hero-content max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-28 lg:py-40">
         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-5 py-2.5 rounded-full text-sm font-semibold mb-8">
             <svg class="w-4 h-4 text-accent-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             South Sudan's Trusted Builder
@@ -413,7 +429,7 @@ footer .logo-img {
     </div>
 </section>
 
-<!-- Why Choose Us Section - Dark Blue -->
+<!-- Why Choose Us Section -->
 <section class="py-20 lg:py-28 areas-section-bg relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none">
         <div class="area-glow-dot" style="top:10%;left:20%;"></div>
@@ -485,7 +501,7 @@ footer .logo-img {
     </div>
 </section>
 
-<!-- Projects Section (6 images + buttons) -->
+<!-- Projects Section -->
 <section id="projects" class="py-20 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
@@ -556,7 +572,7 @@ footer .logo-img {
     </div>
 </section>
 
-<!-- FAQ Section (5 questions) -->
+<!-- FAQ Section -->
 <section id="faq" class="py-20 lg:py-32 bg-white">
     <div class="max-w-4xl mx-auto px-4">
         <div class="text-center mb-16 reveal-up">
@@ -619,7 +635,7 @@ footer .logo-img {
     </div>
 </section>
 
-<!-- CTA Banner (Before Footer) -->
+<!-- CTA Banner -->
 <section class="py-16 lg:py-24 relative overflow-hidden">
     <div class="absolute inset-0"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-brand-950/90 to-slate-950/95"></div></div>
     <div class="relative z-10 max-w-4xl mx-auto px-4 text-center reveal-up">
@@ -641,7 +657,7 @@ footer .logo-img {
 <footer class="bg-slate-950 text-white">
     <div class="max-w-7xl mx-auto px-4 py-12">
         <div class="grid md:grid-cols-4 gap-8">
-            <div><img src="assets/dream.jpg" alt="Dreamhouse Builders" class="h-10 mb-4 brightness-200"><p class="text-surface-200/60 text-sm">Building for generations. Quality construction and design in South Sudan.</p></div>
+            <div><img src="assets/dream.jpg" alt="Dreamhouse Builders" class="logo-img h-10 mb-4 brightness-200 w-auto"><p class="text-surface-200/60 text-sm">Building for generations. Quality construction and design in South Sudan.</p></div>
             <div><h4 class="font-bold mb-4">Services</h4><ul class="space-y-2 text-sm text-surface-200/50"><li>Architectural Design</li><li>Building Construction</li><li>Civil Works</li><li>Project Management</li></ul></div>
             <div><h4 class="font-bold mb-4">Areas</h4><ul class="space-y-2 text-sm text-surface-200/50"><li>Juba</li><li>Nimule</li><li>Yei</li><li>Bor</li></ul></div>
             <div><h4 class="font-bold mb-4">Contact</h4><ul class="space-y-2 text-sm"><li>+211 925 092 507</li><li>info@dreamhousebuilder.com</li><li>Juba, South Sudan</li></ul></div>
